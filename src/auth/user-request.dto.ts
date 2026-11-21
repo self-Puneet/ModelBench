@@ -3,6 +3,7 @@ import { User } from "./user.interface.js";
 import { OmitType, PartialType } from '@nestjs/mapped-types';
 import { Hash } from "../common/transformer/hash.transformer.js";
 import { UserEntity } from "./user.entity.js";
+import { UserResponseDto } from "./user-response.dto.js";
 
 export class CreateUserRequestDto extends OmitType(UserEntity, ['user_id'] as const) {
 
@@ -19,9 +20,8 @@ export class CreateUserRequestDto extends OmitType(UserEntity, ['user_id'] as co
     @IsPhoneNumber()
     contact_number: string;
 
-    @IsString()
+    @IsString({ message: "why the hell is your password is not strin!!!" })
     @IsStrongPassword({ minLength: 8, minUppercase: 1, minSymbols: 1 })
-    @Hash()
     password: string;
 }
 

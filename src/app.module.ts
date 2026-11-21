@@ -5,17 +5,13 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './auth/auth.module.js';
 import { DataSource } from 'typeorm';
 import { UserEntity } from './auth/user.entity.js';
+import { typeOrmModule } from './type-orm.module.js';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
-
-    TypeOrmModule.forRoot({
-      type: 'mysql',
-      url: process.env.DATABASE_URL,
-      database: process.env.DATABASE_NAME,
-      synchronize: true,
-      entities: [UserEntity]
-    }),
+    ConfigModule.forRoot({ isGlobal: true, envFilePath: './.env' }),
+    typeOrmModule,
     UserModule
   ],
   controllers: [AppController],
