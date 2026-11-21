@@ -4,5 +4,6 @@ user {
     password_hash,
     full_name,
     created_at,
-    udpate_at
+    udpate_at,
+    is_verified,
 }
