@@ -1,0 +1,8 @@
+user {
+    user_id,
+    email,
+    password_hash,
+    full_name,
+    created_at,
+    udpate_at
+}
